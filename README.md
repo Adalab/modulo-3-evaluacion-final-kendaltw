@@ -1,8 +1,7 @@
-# React + Vite
+This is an exercise to practice our React skills where we create a list or "Rick & Morty" characters given to us through an Api.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We also created an input to filter tha characters by their names.
 
-Currently, two official plugins are available:
+If you click on a character it will open in a new route and show some some more details about the character.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the website just type npm run dev at your Terminal.
