@@ -1,4 +1,4 @@
-This is an exercise to practice our React skills where we create a list or "Rick & Morty" characters given to us through an Api.
+This is an exercise to practice our React skills where we create a "Rick & Morty" character list with characters given to us through an Api.
 
 We also created an input to filter tha characters by their names.
 
