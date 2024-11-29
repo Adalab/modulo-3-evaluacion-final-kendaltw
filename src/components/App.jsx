@@ -10,7 +10,8 @@ import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [filterName, setFilterName] = useState([]);
+  const [filterName, setFilterName] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -35,8 +36,9 @@ function App() {
     setFilterName(value);
   };
   const filteredCharacters = characters.filter((character) => {
-    return character.name.includes(filterName);
+    return character.name.toLowerCase().includes(filterName.toLowerCase());
   });
+  // .sort (() => )
 
   //Hacer tarjeta detalle de cada personaje con Route
   const { pathname } = useLocation();

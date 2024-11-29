@@ -2,7 +2,7 @@ import photo from "../images/photo.png";
 
 function Filters({ onChangeName }) {
   const onChangeInput = (ev) => {
-    console.log(typeof ev.target.value);
+    ev.preventDefault();
     onChangeName(ev.target.value);
   };
   return (
@@ -10,7 +10,13 @@ function Filters({ onChangeName }) {
       <img className="photo-portal" src={photo} alt="rick & morty" />
       <form className="form" action="">
         <label htmlFor="name">Nombre de personaje</label>
-        <input type="text" id="name" name="name" onChange={onChangeInput} />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={onChangeInput}
+          placeholder="Rick Sanchez"
+        />
       </form>
     </div>
   );
