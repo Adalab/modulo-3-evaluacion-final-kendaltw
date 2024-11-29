@@ -59,7 +59,10 @@ function App() {
             element={
               <>
                 <Filters onChangeName={onChangeName} />
-                <CharacterList characters={filteredCharacters} />
+                <CharacterList
+                  name={filterName}
+                  characters={filteredCharacters}
+                />
               </>
             }
           />
