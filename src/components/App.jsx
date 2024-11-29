@@ -1,5 +1,7 @@
 import "../scss/App.scss";
 import CharacterList from "./CharacterList";
+import logo from "../images/title.png";
+
 // import getCharactersFromApi from "../services/getCharactersFromApi";
 import { useEffect, useState } from "react";
 import Filters from "./Filters";
@@ -48,7 +50,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>Rick y Morty</h1>
+        <img src={logo} alt="Rick & Morty title" />
       </header>
       <main className="main">
         <Routes>

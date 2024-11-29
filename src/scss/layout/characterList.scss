@@ -13,3 +13,11 @@
   padding: 30px;
   color: rgb(57, 186, 202);
 }
+.list-pickle {
+  display: flex;
+  align-items: center;
+
+  img {
+    max-width: 90px;
+  }
+}

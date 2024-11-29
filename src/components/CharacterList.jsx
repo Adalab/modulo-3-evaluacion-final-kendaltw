@@ -1,4 +1,5 @@
 import CharacterCard from "./CharacterCard";
+import pickle from "../images/picke-rick.png";
 
 function CharacterList({ characters }) {
   const characterElements = characters.map((character) => {
@@ -6,7 +7,10 @@ function CharacterList({ characters }) {
   });
   return (
     <section className="list-title">
-      <h3>Lista de personajes</h3>
+      <div className="list-pickle">
+        <h3>Lista de personajes</h3>
+        <img src={pickle} alt="pickle rick" />
+      </div>
       <ul className="list">{characterElements}</ul>;
     </section>
   );
