@@ -1,7 +1,7 @@
 import "../scss/App.scss";
 import CharacterList from "./CharacterList";
 import logo from "../images/title.png";
-import warning from "../images/warning.png";
+
 // import getCharactersFromApi from "../services/getCharactersFromApi";
 import { useEffect, useState } from "react";
 import Filters from "./Filters";
@@ -12,6 +12,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [filterName, setFilterName] = useState("");
   const [message, setMessage] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -34,6 +35,7 @@ function App() {
 
   const onChangeName = (value) => {
     setFilterName(value);
+    setHasSearched(true);
   };
   const filteredCharacters = characters
     .filter((character) => {
@@ -43,15 +45,8 @@ function App() {
       return a.name.localeCompare(b.name);
     });
   useEffect(() => {
-    if (filteredCharacters.length === 0) {
-      setMessage(
-        <>
-          <img src={warning} alt="warning" style={{ width: "20px" }} />
-          {`  No hemos encontrado a ${filterName} en ninguno de los
-          universos paralelos  `}
-          <img src={warning} alt="warning" style={{ width: "20px" }} />
-        </>
-      );
+    if (hasSearched && filteredCharacters.length === 0) {
+      setMessage("no encontrado");
     } else {
       setMessage("");
     }
@@ -80,6 +75,7 @@ function App() {
                 <Filters onChangeName={onChangeName} />
                 <CharacterList
                   characters={filteredCharacters}
+                  name={filterName}
                   message={message}
                 />
               </>
