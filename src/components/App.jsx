@@ -1,7 +1,7 @@
 import "../scss/App.scss";
 import CharacterList from "./CharacterList";
 import logo from "../images/title.png";
-
+import warning from "../images/warning.png";
 // import getCharactersFromApi from "../services/getCharactersFromApi";
 import { useEffect, useState } from "react";
 import Filters from "./Filters";
@@ -35,10 +35,27 @@ function App() {
   const onChangeName = (value) => {
     setFilterName(value);
   };
-  const filteredCharacters = characters.filter((character) => {
-    return character.name.toLowerCase().includes(filterName.toLowerCase());
-  });
-  // .sort (() => )
+  const filteredCharacters = characters
+    .filter((character) => {
+      return character.name.toLowerCase().includes(filterName.toLowerCase());
+    })
+    .sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+  useEffect(() => {
+    if (filteredCharacters.length === 0) {
+      setMessage(
+        <>
+          <img src={warning} alt="warning" style={{ width: "20px" }} />
+          {`  No hemos encontrado a ${filterName} en ninguno de los
+          universos paralelos  `}
+          <img src={warning} alt="warning" style={{ width: "20px" }} />
+        </>
+      );
+    } else {
+      setMessage("");
+    }
+  }, [filterName]);
 
   //Hacer tarjeta detalle de cada personaje con Route
   const { pathname } = useLocation();
@@ -62,8 +79,8 @@ function App() {
               <>
                 <Filters onChangeName={onChangeName} />
                 <CharacterList
-                  name={filterName}
                   characters={filteredCharacters}
+                  message={message}
                 />
               </>
             }
